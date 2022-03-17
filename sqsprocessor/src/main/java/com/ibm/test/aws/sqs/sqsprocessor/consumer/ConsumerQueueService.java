@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.stereotype.Service;
 
+import com.amazonaws.services.sqs.model.Message;
+
 import io.awspring.cloud.messaging.core.QueueMessagingTemplate;
 import lombok.RequiredArgsConstructor;
 
@@ -30,10 +32,9 @@ public class ConsumerQueueService {
 	private String endPoint;
 	
 	//@SqsListener("${cloud.aws.end-point.uri}")
-	public Map<String,String> receiveMessage(){
+	public Message receiveMessage(){
 		
-		Map<String,String> recvdMessageMap = new HashMap<String,String>();
-		recvdMessageMap = queueMessagingTemplate.receiveAndConvert(endPoint,HashMap.class);
-		return recvdMessageMap;
+		Message recivedMsg = queueMessagingTemplate.receiveAndConvert(endPoint,Message.class);
+		return recivedMsg;
 	}
 }

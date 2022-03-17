@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amazonaws.services.sqs.model.Message;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ibm.test.aws.sqs.sqsprocessor.consumer.ConsumerQueueService;
 import com.ibm.test.aws.sqs.sqsprocessor.messagehandler.SqsMessage;
@@ -48,8 +49,12 @@ public class SqsMessageController {
 
 	
     @GetMapping("getmessage")
-	public ResponseEntity<Map<String,String>> getMessage(){
+	public ResponseEntity<Message> getMessage(){
 		
+    	Message rercvdMsg = consumerQueueService.receiveMessage();
+    	System.out.println("Message :" + rercvdMsg.getBody());
+    	System.out.println("Message Attributes :" + rercvdMsg.getMessageAttributes());
+    	System.out.println("Attributes :" + rercvdMsg.getAttributes());
 		return new ResponseEntity<>(consumerQueueService.receiveMessage(), HttpStatus.OK);
 		
 	}
