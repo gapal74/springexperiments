@@ -22,7 +22,7 @@ import com.ibm.test.aws.sqs.sqsprocessor.custom.exception.EntityNotFoundExceptio
  *
  */
 @ControllerAdvice
-public class RestExceptionHandler extends ResponseEntityExceptionHandler {
+public class SQSExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(EntityNotFoundException.class)
 	protected ResponseEntity<Object> handleEntityNotFound(EntityNotFoundException ex) {
