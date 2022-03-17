@@ -16,7 +16,6 @@
 	<properties>
 		<java.version>17</java.version>
 	</properties>
-<<<<<<< HEAD
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -27,7 +26,7 @@
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
-	</dependencyManagement>		
+	</dependencyManagement>	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -38,39 +37,16 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws -->
-		<dependency>
-		    <groupId>io.awspring.cloud</groupId>
-		    <artifactId>spring-cloud-starter-aws</artifactId>
-		</dependency>
+	    <dependency>
+	        <groupId>io.awspring.cloud</groupId>
+	        <artifactId>spring-cloud-starter-aws</artifactId>
+	    </dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws-messaging -->
 	    <dependency>
 	        <groupId>io.awspring.cloud</groupId>
 	        <artifactId>spring-cloud-starter-aws-messaging</artifactId>
 	    </dependency>
-=======
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws -->
-		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-aws</artifactId>
-		    <version>2.2.6.RELEASE</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws-messaging -->
-		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-aws-messaging</artifactId>
-		    <version>2.2.6.RELEASE</version>
-		</dependency>
-
->>>>>>> branch 'master' of https://github.com/gapal74/springexperiments.git
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
