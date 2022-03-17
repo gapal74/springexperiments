@@ -1,5 +1,5 @@
-package com.ibm.test.aws.sqs.sqsprocessor.custom.exception;
 
+package com.ibm.test.aws.sqs.sqsprocessor.custom.exception;
 
 public class EntityNotFoundException extends Exception {
 
