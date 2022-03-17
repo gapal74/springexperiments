@@ -1,3 +1,5 @@
 /.classpath
 /.factorypath
 /.project
+/target
+/bin
