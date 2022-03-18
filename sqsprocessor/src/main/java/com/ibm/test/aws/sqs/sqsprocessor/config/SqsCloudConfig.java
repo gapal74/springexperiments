@@ -4,18 +4,28 @@
  */
 package com.ibm.test.aws.sqs.sqsprocessor.config;
 
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.converter.MappingJackson2MessageConverter;
+import org.springframework.messaging.converter.MessageConverter;
+import org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sqs.AmazonSQSAsync;
 import com.amazonaws.services.sqs.AmazonSQSAsyncClientBuilder;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.awspring.cloud.messaging.config.QueueMessageHandlerFactory;
 import io.awspring.cloud.messaging.core.QueueMessagingTemplate;
+import io.awspring.cloud.messaging.listener.QueueMessageHandler;
+import io.awspring.cloud.messaging.listener.SimpleMessageListenerContainer;
 
 /**
  * @author 02029H744
@@ -51,6 +61,6 @@ public class SqsCloudConfig {
 		return amazonSQSAsync;
 
 	}
-
+	
 
 }
