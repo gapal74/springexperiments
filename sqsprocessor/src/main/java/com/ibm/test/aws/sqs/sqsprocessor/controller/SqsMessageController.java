@@ -3,6 +3,7 @@ package com.ibm.test.aws.sqs.sqsprocessor.controller;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.amazonaws.services.sqs.model.Message;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ibm.test.aws.sqs.sqsprocessor.consumer.ConsumerQueueService;
+import com.ibm.test.aws.sqs.sqsprocessor.messagehandler.SQSConsumedMessage;
 import com.ibm.test.aws.sqs.sqsprocessor.messagehandler.SqsMessage;
 import com.ibm.test.aws.sqs.sqsprocessor.publisher.PublishQueueService;
 
@@ -49,12 +51,14 @@ public class SqsMessageController {
 
 	
     @GetMapping("getmessage")
-	public ResponseEntity<Message> getMessage(){
+	public ResponseEntity<List<SQSConsumedMessage>> getMessage(){
 		
-    	Message rercvdMsg = consumerQueueService.receiveMessage();
-    	System.out.println("Message :" + rercvdMsg.getBody());
-    	System.out.println("Message Attributes :" + rercvdMsg.getMessageAttributes());
-    	System.out.println("Attributes :" + rercvdMsg.getAttributes());
+    	//SQSConsumedMessage rercvdMsg = null;
+    	//SQSConsumedMessage rercvdMsg = 
+    	//consumerQueueService.receiveMessage();
+    	//System.out.println("Message :" + rercvdMsg.getBody());
+    	//System.out.println("Message Attributes :" + rercvdMsg.getMessageAttributes());
+    	//System.out.println("Attributes :" + rercvdMsg.getAttributes());
 		return new ResponseEntity<>(consumerQueueService.receiveMessage(), HttpStatus.OK);
 		
 	}

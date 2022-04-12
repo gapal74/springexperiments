@@ -45,14 +45,19 @@ public class PublishQueueService {
 			MessageAttributeValue operationTypeValue = new MessageAttributeValue();
 			Map<String, String> attributeMap= new HashMap<String,String>();
 			Message msg = new Message();
+			traceIdValue.setDataType("String");
+			traceIdValue.setStringValue(UUID.randomUUID().toString());
+			
 			// generates a UUID as the traceId
-			msg.addMessageAttributesEntry("TRACE_ID", traceIdValue.withDataType("String").withStringValue(UUID.randomUUID().toString()));
-			msg.addMessageAttributesEntry("OPERATION_TYPE", operationTypeValue.withDataType("String").withStringValue("DELiVER"));
-			attributeMap.put("SOURCE_DOMAIN", "ORCH");
-			attributeMap.put("DESTINATION_DOMAIN", "TASK");
+			msg.addMessageAttributesEntry("TRACE_ID", traceIdValue);
+			msg.addMessageAttributesEntry("OPERATION_TYPE", operationTypeValue.withDataType("String").withStringValue("DELIVER"));
+			//attributeMap.put("SOURCE_DOMAIN", "ORCH");
+			//attributeMap.put("DESTINATION_DOMAIN", "TASK");
 			msg.setBody(jsonString);
-			msg.setAttributes(attributeMap);
-			queueMessagingTemplate.send(endPoint, MessageBuilder.withPayload(msg).build());
+			//msg.setAttributes(attributeMap);
+			msg.addAttributesEntry("SOURCE_DOMAIN", "ORCH");
+			msg.addAttributesEntry("DESTINATION_DOMAIN", "TASK");
+			queueMessagingTemplate.convertAndSend(endPoint, msg);
 			// logger.info("Message sent successfully " + jsonString);
 		} catch (Exception e) {
 			e.printStackTrace();
